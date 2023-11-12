@@ -1,11 +1,7 @@
-<h1>See the article</h1>
+<h1><%= @article.title %></h1>
+
+<p><%= @article.text %></p>
 
 <ul>
-    <li>
-        <%="Title: " + @article.title %><br>
-        <%="Text: " + @article.text %>
-    </li>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
 </ul>
-
-<h1><%= @article.title %></h1>
-<p><%= @article.text %></p>
