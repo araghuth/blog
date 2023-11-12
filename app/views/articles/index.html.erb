@@ -1,26 +1,5 @@
 <h1>Articles</h1>
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= article.title %>
-      <%= ", " %>
-      <%= article.text %>
-    </li>
-  <% end %>
-</ul>
 
-<h1>Articles</h1>
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <a href="<%= article_path(article) %>">
-        <%= article.title %>
-      </a>
-    </li>
-  <% end %>
-</ul>
-
-<h1>Articles</h1>
 <ul>
   <% @articles.each do |article| %>
     <li>
@@ -28,3 +7,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= link_to "New Article", new_article_path %>

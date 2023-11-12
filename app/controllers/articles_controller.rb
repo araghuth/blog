@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
     def index
         @articles = Article.all
     end
@@ -7,11 +8,7 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
 
-    # def create
-    #     render plain: params[:article].inspect
-    # end
     def create
-        byebug
         @article = Article.new(title: params[:article][:title], text: params[:article][:text])
     
         if @article.save
@@ -23,5 +20,10 @@ class ArticlesController < ApplicationController
 
     def show
         @article = Article.find(params[:id])
+    end
+
+    private
+    def article_params
+      params.require(:article).permit(:title, :text)
     end
 end
