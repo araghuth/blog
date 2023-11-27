@@ -8,8 +8,8 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(title: params[:article][:title], text: params[:article][:text])
-    
+        @article = Article.new(title: params[:article][:title], text: params[:article][:text], status: params[:article][:status])
+
         if @article.save
           redirect_to @article
         else
@@ -19,12 +19,15 @@ class ArticlesController < ApplicationController
 
     def show
         @article = Article.find(params[:id])
+        @count = @article.view_count + 1
+        @article.view_count += 1
+        @article.save!
     end
 
     def edit
         @article = Article.find(params[:id])
     end
-    
+
     def update
         @article = Article.find(params[:id])
 
@@ -38,7 +41,7 @@ class ArticlesController < ApplicationController
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
-    
+
         redirect_to root_path, status: :see_other
     end
 

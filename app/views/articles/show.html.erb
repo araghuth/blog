@@ -1,7 +1,6 @@
 <h1><%= @article.title %></h1>
-
 <p><%= @article.text %></p>
-
+<p>This article has been viewed <%=@count%> times</p>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
